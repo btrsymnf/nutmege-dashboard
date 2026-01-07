@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>NUTMEGÉ Order Management</title>
+
+    <!-- CSS -->
+    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+    <link href="css/sb-admin-2.min.css" rel="stylesheet">
+
+    <style>
+        /* === NUTMEGÉ SIDEBAR CUSTOM === */
+        .sidebar {
+            background: linear-gradient(180deg, #C59E3D 0%, #B08A2E 100%) !important;
+        }
+
+        .sidebar .sidebar-brand {
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .sidebar .nav-link {
+            color: #ffffff !important;
+            font-size: 14px;
+            padding: 12px 16px;
+            transition: all 0.3s ease;
+            border-radius: 8px;
+            margin: 4px 10px;
+        }
+
+        .sidebar .nav-link i {
+            color: #ffffff !important;
+            margin-right: 8px;
+        }
+
+        .sidebar .nav-item.active .nav-link {
+            background: rgba(255, 255, 255, 0.25);
+            font-weight: 600;
+        }
+
+        .sidebar .nav-item .nav-link:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateX(4px);
+        }
+
+        /* Dropdown */
+        .sidebar .collapse-inner {
+            border-radius: 10px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .sidebar .collapse-item {
+            font-size: 13px;
+            padding: 10px 16px;
+            color: #6c757d;
+            transition: 0.2s;
+        }
+
+        .sidebar .collapse-item i {
+            width: 18px;
+        }
+
+        .sidebar .collapse-item:hover {
+            background: #f4f4f4;
+            color: #8A0B26;
+            font-weight: 600;
+        }
+
+        /* Divider */
+        .sidebar-divider {
+            border-top: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .table thead {
+            background-color: #f6c23e;
+            color: #fff;
+        }
+    </style>
+</head>
+
+<body id="page-top">
+    <div id="wrapper">
+
+        <!-- SIDEBAR -->
+        <ul class="navbar-nav sidebar sidebar-dark accordion" id="accordionSidebar">
+
+            <!-- BRAND -->
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="#">
+                <!--<div class="sidebar-brand-icon">
+                    <img src="image/logo.png" alt="NUTMEGÉ Logo" style="width:40px; height:40px; object-fit:contain;">
+                </div>-->
+                <div class="sidebar-brand-text mx-3">NUTMEGÉ</div>
+            </a>
+
+
+            <hr class="sidebar-divider my-0">
+
+            <!-- DASHBOARD -->
+            <li class="nav-item active">
+                <a class="nav-link" href="#">
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <span>Dashboard</span>
+                </a>
+            </li>
+
+            <hr class="sidebar-divider">
+
+            <!-- Categories Dropdown -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseCategories"
+                    aria-expanded="true" aria-controls="collapseCategories">
+                    <i class="fas fa-list"></i>
+                    <span>Categories</span>
+                </a>
+                <div id="collapseCategories" class="collapse" aria-labelledby="headingCategories"
+                    data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item" href="aromatherapy.html"><i
+                                class="fas fa-spa mr-2"></i>Aromatherapy</a>
+                        <a class="collapse-item" href="baverages.html"><i class="fas fa-mug-hot mr-2"></i>Beverages</a>
+                        <a class="collapse-item" href="diffuser.html"><i class="fas fa-wind mr-2"></i>Diffuser</a>
+                        <a class="collapse-item" href="personalcare.html"><i class="fas fa-pump-soap mr-2"></i>Personal
+                            Care</a>
+                    </div>
+                </div>
+            </li>
+
+            <hr class="sidebar-divider">
+
+            <!-- Login -->
+            <li class="nav-item">
+                <a class="nav-link" href="order.html">
+                    <i class="fas fa-sign-in-alt"></i>
+                    <span>Order</span>
+                </a>
+            </li>
+
+            <hr class="sidebar-divider">
+
+            <li class="nav-item">
+                <a class="nav-link" href="settings.html">
+                    <i class="fas fa-cog"></i>
+                    <span>Settings</span>
+                </a>
+            </li>
+
+            <hr class="sidebar-divider">
+
+            <li class="nav-item">
+                <a class="nav-link" href="#" onclick="confirmLogout(event)">
+                    <i class="fas fa-cog"></i>
+                    <span>Log Out</span>
+                </a>
+            </li>
+
+            <hr class="sidebar-divider d-none d-md-block">
+        </ul>
+        <!-- END SIDEBAR -->
+
+        <!-- CONTENT -->
+        <div id="content-wrapper" class="d-flex flex-column">
+            <div id="content">
+                <div id="content-wrapper" class="d-flex flex-column">
+                    <div id="content">
+
+                        <!-- TOPBAR -->
+                        <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 shadow">
+
+                            <div class="container-fluid justify-content-center">
+                                <!-- Search Form -->
+                                <div class="input-group" style="max-width: 400px;">
+                                    <input type="number" id="searchId" class="form-control rounded-left"
+                                        placeholder="Search by Order ID" style="border: 1px solid #ced4da;">
+                                    <div class="input-group-append">
+                                        <button class="btn btn-light rounded-right" type="button"
+                                            onclick="searchOrder()"
+                                            style="border: 1px solid #ced4da; border-left: none;">
+                                            <i class="fas fa-search text-secondary"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <ul class="navbar-nav ml-auto">
+                                <li class="nav-item dropdown no-arrow">
+                                    <a class="nav-link dropdown-toggle" href="#">
+                                        <span class="mr-2 d-none d-lg-inline text-gray-600 small">Admin NUTMEGÉ</span>
+                                        <img class="img-profile rounded-circle" src="img/undraw_profile.svg">
+                                    </a>
+                                </li>
+                            </ul>
+                        </nav>
+
+                        <div class="container-fluid mt-4">
+                            <h1 class="h3 mb-4 text-gray-800">Order Management</h1>
+
+                            <div class="card shadow">
+                                <div class="card-body">
+                                    <table class="table table-bordered table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th>No</th>
+                                                <th>Customer</th>
+                                                <th>Product</th>
+                                                <th>Category</th>
+                                                <th>Qty</th>
+                                                <th>Total (RM)</th>
+                                                <th>Status</th>
+                                                <th>Refund</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="orderBody"></tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- JS -->
+            <script src="vendor/jquery/jquery.min.js"></script>
+            <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+            <script>
+                // Daftar produk Nutmegé
+                const products = [
+                    { name: "Nutmegé Ultrasonic Aroma Diffuser", category: "Diffuser", price: 120 },
+                    { name: "Nutmegé Aroma Diffuser Blend", category: "Diffuser", price: 40 },
+                    { name: "Nutmegé Pure Essential Oil", category: "Oil", price: 35 },
+                    { name: "Nutmegé Aromatic Wax Melts", category: "Aromatherapy", price: 20 },
+                    { name: "Nutmegé Ivory Balm Mini", category: "Balm", price: 8 },
+                    { name: "Nutmegé Ivory Balm Grande", category: "Balm", price: 15 },
+                    { name: "Nutmegé Golden Relief Balm", category: "Balm", price: 18 },
+                    { name: "Nutmegé Classic White Oil", category: "Oil", price: 20 },
+                    { name: "Nutmegé Golden Herbal Oil", category: "Oil", price: 22 },
+                    { name: "Nutmegé Herbal Infusion Tea", category: "Beverages", price: 18 },
+                    { name: "Nutmegé Spiced Fruit Jam", category: "Spread", price: 16 },
+                    { name: "Nutmegé Spiced Dry Pickle", category: "Pickle", price: 14 },
+                    { name: "Nutmegé Nutmeg Infused Juice", category: "Beverages", price: 10 },
+                    { name: "Nutmegé Candied Nutmeg Delight", category: "Snack", price: 12 },
+                    { name: "Nutmegé™ Velvet Elixir Body Oil", category: "Body Care", price: 25 },
+                    { name: "Nutmegé Revitalising Shampoo", category: "Body Care", price: 25 },
+                    { name: "Nutmegé Refreshing Body Wash", category: "Body Care", price: 22 },
+                    { name: "Nutmegé Silkening Body Lotion", category: "Body Care", price: 28 },
+                    { name: "Nutmegé Exfoliating Body Scrub", category: "Body Care", price: 26 },
+                    { name: "Nutmegé Herbal Cleansing Soap", category: "Body Care", price: 9 },
+                    { name: "Nutmegé Nourishing Lip Balm", category: "Body Care", price: 12 },
+                    { name: "Nutmegé Signature Nutmeg Candle", category: "Aromatherapy", price: 30 }
+                ];
+
+                const customers = ["Alice Tan", "Bob Lim", "Cindy Wong", "David Lee", "Emma Chan", "Faris Ahmad", "Gina Lim", "Hafiz Ali", "Izwan Ismail", "Jasmine Tan", "Khalid Hassan", "Liyana Omar", "Maya Mohd", "Nadia Rahman", "Omar Syed", "Puteri Safira", "Qistina Izzati", "Rizal Rosli", "Sabrina Nor", "Shafiq Zain", "Tania Halim", "Umar Farouk", "Vina Wong", "Wahidah Salleh", "Xavier Tan", "Yasmin Ahmad", "Zack Lee"];
+                const statuses = ["Pending", "Shipped", "Completed", "Cancelled", "In Transit"];
+                const refunds = ["Pending", "Approved", "Declined"];
+
+                // Generate 100 dummy orders
+                let orders = [];
+                for (let i = 1; i <= 100; i++) {
+                    const product = products[Math.floor(Math.random() * products.length)];
+                    const customer = customers[Math.floor(Math.random() * customers.length)];
+                    const qty = Math.floor(Math.random() * 5) + 1; // 1-5
+                    const total = qty * product.price;
+                    const status = statuses[Math.floor(Math.random() * statuses.length)];
+                    const refund = refunds[Math.floor(Math.random() * refunds.length)];
+
+                    orders.push({ customer, product: product.name, category: product.category, qty, total, status, refund });
+                }
+
+                function renderTable() {
+                    const tbody = document.getElementById("orderBody");
+                    tbody.innerHTML = "";
+
+                    orders.forEach((o, i) => {
+                        // Refund UI
+                        let refundUI = "";
+                        if (o.refund === "Approved") {
+                            refundUI = `<span class="text-success font-weight-bold">✔ Approved</span>`;
+                        } else if (o.refund === "Declined") {
+                            refundUI = `<span class="text-danger font-weight-bold">✖ Declined</span>`;
+                        } else {
+                            refundUI = `
+                    <div class="dropdown text-center">
+                        <button class="btn btn-light btn-sm" data-toggle="dropdown">&#8942;</button>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item text-success" href="#" onclick="approveRefund(${i})">Approve</a>
+                            <a class="dropdown-item text-danger" href="#" onclick="declineRefund(${i})">Decline</a>
+                            <a class="dropdown-item text-secondary disabled">Pending</a>
+                        </div>
+                    </div>`;
+                        }
+
+                        // Status badge
+                        let statusBadge = "";
+                        switch (o.status) {
+                            case "Pending": statusBadge = `<span class="badge badge-info">${o.status}</span>`; break;
+                            case "Shipped": statusBadge = `<span class="badge badge-warning">${o.status}</span>`; break;
+                            case "Completed": statusBadge = `<span class="badge badge-success">${o.status}</span>`; break;
+                            case "Cancelled": statusBadge = `<span class="badge badge-danger">${o.status}</span>`; break;
+                            case "In Transit": statusBadge = `<span class="badge badge-primary">${o.status}</span>`; break;
+                        }
+
+                        tbody.innerHTML += `
+                <tr>
+                    <td>${i}</td>
+                    <td>${o.customer}</td>
+                    <td>${o.product}</td>
+                    <td>${o.category}</td>
+                    <td>${o.qty}</td>
+                    <td>${o.total.toFixed(2)}</td>
+                    <td>${statusBadge}</td>
+                    <td class="align-middle text-center">${refundUI}</td>
+                </tr>
+            `;
+                    });
+                }
+
+                function approveRefund(i) {
+                    if (confirm("Approve refund?")) {
+                        orders[i].refund = "Approved";
+                        renderTable();
+                    }
+                }
+
+                function declineRefund(i) {
+                    if (confirm("Decline refund?")) {
+                        orders[i].refund = "Declined";
+                        renderTable();
+                    }
+                }
+
+                function confirmLogout(e) {
+                    e.preventDefault();
+                    if (confirm("Are you sure you want to log out?")) {
+                        window.location.href = "login.html";
+                    }
+                }
+
+                renderTable();
+            </script>
+
+
+</body>
+
+</html>

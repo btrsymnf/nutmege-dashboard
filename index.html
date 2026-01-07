@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>NUTMEGÉ Dashboard</title>
+
+    <!-- Fonts -->
+    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+
+    <!-- SB Admin 2 CSS -->
+    <link href="css/sb-admin-2.min.css" rel="stylesheet">
+
+    <!-- CUSTOM SIDEBAR COLOR -->
+    <style>
+        /* === NUTMEGÉ SIDEBAR CUSTOM === */
+        .sidebar {
+            background: linear-gradient(180deg, #C59E3D 0%, #B08A2E 100%) !important;
+        }
+
+        .sidebar .sidebar-brand {
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .sidebar .nav-link {
+            color: #ffffff !important;
+            font-size: 14px;
+            padding: 12px 16px;
+            transition: all 0.3s ease;
+            border-radius: 8px;
+            margin: 4px 10px;
+        }
+
+        .sidebar .nav-link i {
+            color: #ffffff !important;
+            margin-right: 8px;
+        }
+
+        .sidebar .nav-item.active .nav-link {
+            background: rgba(255, 255, 255, 0.25);
+            font-weight: 600;
+        }
+
+        .sidebar .nav-item .nav-link:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateX(4px);
+        }
+
+        /* Dropdown */
+        .sidebar .collapse-inner {
+            border-radius: 10px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .sidebar .collapse-item {
+            font-size: 13px;
+            padding: 10px 16px;
+            color: #6c757d;
+            transition: 0.2s;
+        }
+
+        .sidebar .collapse-item i {
+            width: 18px;
+        }
+
+        .sidebar .collapse-item:hover {
+            background: #f4f4f4;
+            color: #8A0B26;
+            font-weight: 600;
+        }
+
+        /* Divider */
+        .sidebar-divider {
+            border-top: 1px solid rgba(255, 255, 255, 0.3);
+        }
+    </style>
+
+</head>
+
+<body id="page-top">
+
+    <div id="wrapper">
+
+        <!-- SIDEBAR -->
+        <ul class="navbar-nav sidebar sidebar-dark accordion" id="accordionSidebar">
+
+            <!-- BRAND -->
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="#">
+                <!--<div class="sidebar-brand-icon">
+                    <img src="image/logo.png" alt="NUTMEGÉ Logo" style="width:40px; height:40px; object-fit:contain;">
+                </div>-->
+                <div class="sidebar-brand-text mx-3">NUTMEGÉ</div>
+            </a>
+
+
+            <hr class="sidebar-divider my-0">
+
+            <!-- DASHBOARD -->
+            <li class="nav-item active">
+                <a class="nav-link" href="#">
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <span>Dashboard</span>
+                </a>
+            </li>
+
+            <hr class="sidebar-divider">
+
+            <!-- Categories Dropdown -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseCategories"
+                    aria-expanded="true" aria-controls="collapseCategories">
+                    <i class="fas fa-list"></i>
+                    <span>Categories</span>
+                </a>
+                <div id="collapseCategories" class="collapse" aria-labelledby="headingCategories"
+                    data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item" href="aromatherapy.html"><i
+                                class="fas fa-spa mr-2"></i>Aromatherapy</a>
+                        <a class="collapse-item" href="baverages.html"><i class="fas fa-mug-hot mr-2"></i>Beverages</a>
+                        <a class="collapse-item" href="diffuser.html"><i class="fas fa-wind mr-2"></i>Diffuser</a>
+                        <a class="collapse-item" href="personalcare.html"><i class="fas fa-pump-soap mr-2"></i>Personal
+                            Care</a>
+                    </div>
+                </div>
+            </li>
+
+            <hr class="sidebar-divider">
+
+            <!-- Login -->
+            <li class="nav-item">
+                <a class="nav-link" href="order.html">
+                    <i class="fas fa-sign-in-alt"></i>
+                    <span>Order</span>
+                </a>
+            </li>
+
+            <hr class="sidebar-divider">
+
+            <li class="nav-item">
+                <a class="nav-link" href="settings.html">
+                    <i class="fas fa-cog"></i>
+                    <span>Settings</span>
+                </a>
+            </li>
+
+            <hr class="sidebar-divider">
+
+            <li class="nav-item">
+                <a class="nav-link" href="#" onclick="confirmLogout(event)">
+                    <i class="fas fa-cog"></i>
+                    <span>Log Out</span>
+                </a>
+            </li>
+
+            <hr class="sidebar-divider d-none d-md-block">
+        </ul>
+        <!-- END SIDEBAR -->
+
+        <!-- CONTENT WRAPPER -->
+        <div id="content-wrapper" class="d-flex flex-column">
+            <div id="content">
+
+                <!-- TOPBAR -->
+                <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 shadow">
+
+                    <div class="container-fluid justify-content-center">
+                        <!-- Search Form -->
+                        <div class="input-group" style="max-width: 400px;">
+                            <input type="number" id="searchId" class="form-control rounded-left"
+                                placeholder="Search by Order ID" style="border: 1px solid #ced4da;">
+                            <div class="input-group-append">
+                                <button class="btn btn-light rounded-right" type="button" onclick="searchOrder()"
+                                    style="border: 1px solid #ced4da; border-left: none;">
+                                    <i class="fas fa-search text-secondary"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item dropdown no-arrow">
+                            <a class="nav-link dropdown-toggle" href="#">
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Admin NUTMEGÉ</span>
+                                <img class="img-profile rounded-circle" src="img/undraw_profile.svg">
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+                <!-- END TOPBAR -->
+
+                <!-- MAIN CONTENT -->
+                <div class="container-fluid">
+
+                    <h1 class="h3 mb-4 text-gray-800">NUTMEGÉ Dashboard</h1>
+
+                    <!-- CARDS -->
+                    <div class="row">
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card border-left-primary shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                        Monthly Sales (Nutmegé)
+                                    </div>
+                                    <div class="h5 mb-0 font-weight-bold text-gray-800">RM 10,000</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card border-left-success shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                        Annual Sales (Nutmegé)
+                                    </div>
+                                    <div class="h5 mb-0 font-weight-bold text-gray-800">RM 115,000</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card border-left-info shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Product
+                                        Production</div>
+                                    <div class="h5 mb-0 font-weight-bold text-gray-800">65%</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card border-left-warning shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Customer
+                                        Orders</div>
+                                    <div class="h5 mb-0 font-weight-bold text-gray-800">178</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- CHARTS -->
+                    <div class="row">
+
+                        <!-- BAR CHART -->
+                        <div class="col-lg-6 mb-4">
+                            <div class="card shadow mb-4">
+                                <div class="card-header py-3">
+                                    <h6 class="m-0 font-weight-bold text-primary">Monthly Sales</h6>
+                                </div>
+                                <div class="card-body">
+                                    <canvas id="monthlySalesChart"></canvas>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- PIE CHART -->
+                        <div class="col-lg-6 mb-4">
+                            <div class="card shadow mb-4">
+                                <div class="card-header py-3">
+                                    <h6 class="m-0 font-weight-bold text-primary">Revenue by Category</h6>
+                                </div>
+                                <div class="card-body">
+                                    <canvas id="categoryPieChart"></canvas>
+                                    <div class="mt-4 text-center small">
+                                        <span class="mr-2"><i class="fas fa-circle text-primary"></i>
+                                            Aromatherapy</span>
+                                        <span class="mr-2"><i class="fas fa-circle text-success"></i> Beverages</span>
+                                        <span class="mr-2"><i class="fas fa-circle text-info"></i> Diffuser</span>
+                                        <span class="mr-2"><i class="fas fa-circle text-warning"></i> Personal
+                                            Care</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+                <!-- END MAIN CONTENT -->
+
+            </div>
+
+            <!-- FOOTER -->
+            <footer class="sticky-footer bg-white">
+                <div class="container my-auto text-center">
+                    <span>© 2025 NUTMEGÉ</span>
+                </div>
+            </footer>
+
+        </div>
+
+    </div>
+
+    <!-- SCRIPTS -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="vendor/chart.js/Chart.min.js"></script>
+
+    <script>
+        // MONTHLY SALES BAR CHART
+        var ctxBar = document.getElementById('monthlySalesChart').getContext('2d');
+        var monthlySalesChart = new Chart(ctxBar, {
+            type: 'bar',
+            data: {
+                labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+                datasets: [{
+                    label: 'RM',
+                    data: [18000, 20000, 22000, 25000, 21000, 24000, 26000, 23000, 25000, 27000, 30000, 32000],
+                    backgroundColor: '#8A0B26'
+                }]
+            },
+            options: {
+                scales: {
+                    y: { beginAtZero: true }
+                }
+            }
+        });
+
+        // REVENUE PIE CHART
+        var ctxPie = document.getElementById('categoryPieChart').getContext('2d');
+        var categoryPieChart = new Chart(ctxPie, {
+            type: 'pie',
+            data: {
+                datasets: [{
+                    data: [80000, 50000, 40000, 45000],
+                    backgroundColor: ['#4e73df', '#1cc88a', '#36b9cc', '#f6c23e']
+                }]
+            },
+            options: {
+                responsive: true
+            }
+        });
+
+
+        function confirmLogout(event) {
+            event.preventDefault(); // prevent default link behavior
+            let isSure = confirm("Are you sure you want to log out?");
+            if (isSure) {
+                // redirect to login page
+                window.location.href = "login.html";
+            }
+            // else do nothing, stay in the page
+        }
+
+    </script>
+
+</body>
+
+</html>
